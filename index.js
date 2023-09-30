@@ -6,6 +6,11 @@ const port = process.env.PORT || 7000
 app.use(express.json()); // Parse incoming JSON data
 app.use(express.urlencoded({ extended: true }));
 
+const userRoute =require('./src/routes/user')
+const classRoute =require('./src/routes/class')
+
+app.use('/api/user',userRoute)
+app.use('/api/class',classRoute)
 
 // conn.connect(function(error){
 //     if(error) throw error
@@ -124,6 +129,9 @@ app.post('/update-students',function(req,res){
     }
 })
 
+
+
+
 app.listen(port, () => {
-    console.log('Server is running at 8000')
+    console.log('Server is running at '+port)
 })
